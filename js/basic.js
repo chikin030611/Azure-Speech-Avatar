@@ -236,11 +236,12 @@ window.startSession = () => {
     
 }
 
-window.speak = () => {
+window.speak = (text) => {
     document.getElementById('speak').disabled = true;
     document.getElementById('stopSpeaking').disabled = false
     document.getElementById('audio').muted = false
-    let spokenText = document.getElementById('spokenText').value
+    // let spokenText = document.getElementById('spokenText').value
+    let spokenText = text
     let ttsVoice = document.getElementById('ttsVoice').value
     let personalVoiceSpeakerProfileID = document.getElementById('personalVoiceSpeakerProfileID').value
     let spokenSsml = `<speak version='1.0' xmlns='http://www.w3.org/2001/10/synthesis' xmlns:mstts='http://www.w3.org/2001/mstts' xml:lang='en-US'><voice name='${ttsVoice}'><mstts:ttsembedding speakerProfileId='${personalVoiceSpeakerProfileID}'><mstts:leadingsilence-exact value='0'/>${htmlEncode(spokenText)}</mstts:ttsembedding></voice></speak>`
@@ -298,4 +299,32 @@ window.updatePrivateEndpoint = () => {
     } else {
         document.getElementById('showPrivateEndpointCheckBox').hidden = true
     }
+}
+
+window.askQuestion = function(questionNumber) {
+    const questions = {
+        1: "你可以做到啲咩？",
+        2: "海洋公園有啲咩玩？",
+        3: "海洋公園有啲咩食？",
+        4: "海洋公園有啲咩動物？"
+    };
+    const answers = {
+        1: "我可以提供資訊、娛樂和更多。",
+        2: "海洋公園有過山車、表演和水族館。",
+        3: "海洋公園有各種餐廳和小吃攤。",
+        4: "海洋公園有海豚、海獅和其他海洋生物。"
+    };
+
+    // Get the question and answer based on the button pressed
+    const question = questions[questionNumber];
+    const answer = answers[questionNumber];
+
+    // Speak the answer
+    speak(answer);
+
+    // Update the message history
+    const messageHistory = document.getElementById('messageHistory');
+    messageHistory.innerHTML += `<p><strong>Question:</strong> ${question}</p>`;
+    messageHistory.innerHTML += `<p><strong>Answer:</strong> ${answer}</p>`;
+
 }
