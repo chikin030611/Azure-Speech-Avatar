@@ -309,10 +309,10 @@ window.askQuestion = function(questionNumber) {
         4: "海洋公園有啲咩動物？"
     };
     const answers = {
-        1: "我可以提供資訊、娛樂和更多。",
-        2: "海洋公園有過山車、表演和水族館。",
-        3: "海洋公園有各種餐廳和小吃攤。",
-        4: "海洋公園有海豚、海獅和其他海洋生物。"
+        1: "我可以提供資訊、娛樂同答問題。",
+        2: "海洋公園有過山車、表演同埋水族館。",
+        3: "海洋公園有各種餐廳、仲有小食舖。",
+        4: "海洋公園有海豚、海獅同其他海洋生物。"
     };
 
     // Get the question and answer based on the button pressed
