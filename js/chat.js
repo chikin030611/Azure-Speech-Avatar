@@ -759,3 +759,21 @@ window.updatePrivateEndpoint = () => {
         document.getElementById('showPrivateEndpointCheckBox').hidden = true
     }
 }
+
+window.askQuestion = (question) => {
+    let qnaMap = {
+        "你可以做到啲咩？" : "我可以回答有關海洋公園的問題，例如有什麼玩、食、動物等等。",
+        "海洋公園有啲咩玩？" : "海洋公園有好多遊樂設施，例如海洋劇場、海洋公園大轉盤、海洋公園摩天輪等等。",
+        "海洋公園有啲咩食？" : "海洋公園有好多餐廳，例如海洋公園海景餐廳、海洋公園海岸餐廳、海洋公園海濱餐廳等等。",
+        "海洋公園有啲咩動物？" : "海洋公園有好多動物，例如海豚、海獅、企鵝、海獺等等。",
+    }
+
+    if (qnaMap[question] !== undefined) {
+        speak(qnaMap[question])
+    } else {
+        speak("我唔明你講咩，請問其他問題。")
+    }
+
+
+
+}
