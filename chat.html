@@ -19,7 +19,7 @@
     <option value="southeastasia">Southeast Asia</option>
   </select>
   <label style="font-size: medium;" for="subscriptionKey">Subscription Key:</label>
-  <input id="subscriptionKey" type="password" size="32" style="font-size: medium;" />
+  <input id="subscriptionKey" type="password" size="32" style="font-size: medium;" value="c363a081a77749298842547ca1112c8c" />
   <div style="background-color: white; width: 300px;">
     <input type="checkbox" id="enablePrivateEndpoint" onchange = "window.updatePrivateEndpoint()">Enable Private Endpoint</input><br />
   </div>
@@ -30,13 +30,13 @@
 
   <h2 style="background-color: white; width: 300px;">Azure OpenAI Resource</h2>
   <label style="font-size: medium;" for="azureOpenAIEndpoint">Endpoint:</label>
-  <input id="azureOpenAIEndpoint" type="text" size="64" style="font-size: medium;"></input><br />
+  <input id="azureOpenAIEndpoint" type="text" size="64" style="font-size: medium;" value="https://jtsoft-open-ai.openai.azure.com/"></input><br />
   <label style="font-size: medium;" for="azureOpenAIApiKey">API Key:</label>
-  <input id="azureOpenAIApiKey" type="password" size="32" style="font-size: medium;" /><br />
+  <input id="azureOpenAIApiKey" type="password" size="32" style="font-size: medium;" value="e0669b14fa844b40bc6b9b6356afa7b5"/><br />
   <label style="font-size: medium;" for="azureOpenAIDeploymentName">Deployment Name:</label>
-  <input id="azureOpenAIDeploymentName" type="text" size="32" style="font-size: medium;" /><br />
+  <input id="azureOpenAIDeploymentName" type="text" size="32" style="font-size: medium;" value="jtsoft-gpt-35-turbo"/><br />
   <label style="font-size: medium;"  for="prompt">System Prompt:</label><br/>
-  <textarea id="prompt" style="width: 640px;">You are an AI assistant that helps people find information.</textarea>
+  <textarea id="prompt" style="width: 640px;">你係一個幫助人搵資訊嘅人工智慧助理。必須要俾簡短嘅回答。</textarea>
   <div style="background-color: white; width: 300px;">
     <input type="checkbox" id="enableOyd" onchange="window.updataEnableOyd()">Enable On Your Data</input><br />
   </div>
@@ -57,7 +57,7 @@
   <label style="font-size: medium;" for="sttLocale">STT Locale(s):</label>
   <input id="sttLocales" type="text" size="64" style="font-size: medium;" value="en-US,de-DE,es-ES,fr-FR,it-IT,ja-JP,ko-KR,zh-CN"></input><br />
   <label style="font-size: medium;" for="ttsVoice">TTS Voice:</label>
-  <input id="ttsVoice" type="text" size="32" style="font-size: medium;" value="en-US-AvaMultilingualNeural"></input><br />
+  <input id="ttsVoice" type="text" size="32" style="font-size: medium;" value="zh-HK-HiuGaaiNeural"></input><br />
   <label style="font-size: medium;" for="customVoiceEndpointId">Custom Voice Deployment ID (Endpoint ID):</label>
   <input id="customVoiceEndpointId" type="text" size="32" style="font-size: medium;" value=""></input><br />
   <label style="font-size: medium;" for="personalVoiceSpeakerProfileID">Personal Voice Speaker Profile ID:</label>
@@ -69,9 +69,9 @@
 
   <h2 style="background-color: white; width: 300px;">Avatar Configuration</h2>
   <label style="font-size: medium;" for="talkingAvatarCharacter">Avatar Character:</label>
-  <input id="talkingAvatarCharacter" type="text" size="16" style="font-size: medium;" value="lisa"></input><br />
+  <input id="talkingAvatarCharacter" type="text" size="16" style="font-size: medium;" value="meg"></input><br />
   <label style="font-size: medium;" for="talkingAvatarStyle">Avatar Style:</label>
-  <input id="talkingAvatarStyle" type="text" size="16" style="font-size: medium;" value="casual-sitting"></input><br />
+  <input id="talkingAvatarStyle" type="text" size="16" style="font-size: medium;" value="business"></input><br />
   <div style="background-color: white; width: 200px;">
     <input type="checkbox" id="customizedAvatar">Custom Avatar</input><br />
   </div>
