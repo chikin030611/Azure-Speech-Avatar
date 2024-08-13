@@ -19,7 +19,7 @@
     <option value="southeastasia">Southeast Asia</option>
   </select>
   <label style="font-size: medium;" for="subscriptionKey">Subscription Key:</label>
-  <input id="subscriptionKey" type="password" size="32" style="font-size: medium;" value="c363a081a77749298842547ca1112c8c" />
+  <input id="subscriptionKey" type="password" size="32" style="font-size: medium;" value="" />
   <div style="background-color: white; width: 300px;">
     <input type="checkbox" id="enablePrivateEndpoint" onchange = "window.updatePrivateEndpoint()">Enable Private Endpoint</input><br />
   </div>
@@ -30,7 +30,7 @@
 
   <h2 style="background-color: white; width: 300px;">TTS Configuration</h2>
   <label style="font-size: medium;" for="ttsVoice">TTS Voice:</label>
-  <input id="ttsVoice" type="text" size="32" style="font-size: medium;" value="zh-HK-HiuGaaiNeural"></input><br />
+  <input id="ttsVoice" type="text" size="32" style="font-size: medium;" value="zh-HK-HiuMaanNeural"></input><br />
   <label style="font-size: medium;" for="customVoiceEndpointId">Custom Voice Deployment ID (Endpoint ID):</label>
   <input id="customVoiceEndpointId" type="text" size="32" style="font-size: medium;" value=""></input><br />
   <label style="font-size: medium;" for="personalVoiceSpeakerProfileID">Personal Voice Speaker Profile ID:</label>
@@ -63,16 +63,17 @@
 <br/>
 
 <div id="questionContainer" style="position: relative; width: 960px;">
-	<button id="askQuestion1" style="background-color: #4295FF;" onclick="window.askQuestion(1)">你可以做到啲咩？</button>
-	<button id="askQuestion2" style="background-color: #4295FF;" onclick="window.askQuestion(2)">海洋公園有啲咩玩？</button>
-	<button id="askQuestion3" style="background-color: #4295FF;" onclick="window.askQuestion(3)">海洋公園有啲咩食？</button>
-	<button id="askQuestion4" style="background-color: #4295FF;" onclick="window.askQuestion(4)">海洋公園有啲咩動物？</button>
+  <button id="startStreaming" style="background-color: #4295FF;" onclick="window.startStreaming()" hidden>Start Streaming</button>
+	<button id="askQuestion1" style="background-color: #4295FF;" onclick="window.askQuestion('海洋公園有咩園區？')">海洋公園有咩園區？</button>
+	<button id="askQuestion2" style="background-color: #4295FF;" onclick="window.askQuestion('海洋公園有啲咩玩？')">海洋公園有啲咩玩？</button>
+	<button id="askQuestion3" style="background-color: #4295FF;" onclick="window.askQuestion('海洋公園有啲咩食？')">海洋公園有啲咩食？</button>
+	<button id="askQuestion4" style="background-color: #4295FF;" onclick="window.askQuestion('海洋公園有啲咩動物？')">海洋公園有啲咩動物？</button>
 </div>
 <br/>
 
-<h2 id="videoLabel" style="background-color: white; width: 300px;">Avatar Video</h2>
+<h2 id="videoLabel" style="background-color: white; width: 300px; ">Avatar Video</h2>
 <div id="contentContainer" style="display: flex;">
-  <div id="videoContainer" style="position: relative; width: 480px;"> <!-- Adjusted width for side-by-side layout -->
+  <div id="videoContainer" style="flex: 1 1 480px; position: relative; width: 480px;"> <!-- Adjusted width for side-by-side layout -->
     <div id="overlayArea" style="position: absolute;" hidden="hidden">
       <!-- Add your text or image controls here -->
       <p id="overlayText" style="font-size: large;">Live Video</p>
@@ -83,9 +84,10 @@
     <canvas id="tmpCanvas" width="960" height="540" hidden="hidden"></canvas> <!-- Adjusted size for example -->
   </div>
   
-</div>
-<div id="messageHistory" style="width: 480px; height: 200px; overflow-y: auto; border: 1px solid #ccc; padding: 10px;">
-  <h3>Message History</h3>
+  <div id="messageHistory" style="flex: 1 1 480px; width: 480px; height: 200px; overflow-y: auto; border: 1px solid #ccc; padding: 10px; display: flex;
+  flex-direction: column;">
+    
+  </div>
 </div>
 <br/>
 

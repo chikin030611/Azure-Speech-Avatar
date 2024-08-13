@@ -19,7 +19,7 @@
     <option value="southeastasia">Southeast Asia</option>
   </select>
   <label style="font-size: medium;" for="subscriptionKey">Subscription Key:</label>
-  <input id="subscriptionKey" type="password" size="32" style="font-size: medium;" value="c363a081a77749298842547ca1112c8c" />
+  <input id="subscriptionKey" type="password" size="32" style="font-size: medium;"/>
   <div style="background-color: white; width: 300px;">
     <input type="checkbox" id="enablePrivateEndpoint" onchange = "window.updatePrivateEndpoint()">Enable Private Endpoint</input><br />
   </div>
@@ -30,9 +30,9 @@
 
   <h2 style="background-color: white; width: 300px;">Azure OpenAI Resource</h2>
   <label style="font-size: medium;" for="azureOpenAIEndpoint">Endpoint:</label>
-  <input id="azureOpenAIEndpoint" type="text" size="64" style="font-size: medium;" value="https://jtsoft-open-ai.openai.azure.com/"></input><br />
+  <input id="azureOpenAIEndpoint" type="text" size="64" style="font-size: medium;"></input><br />
   <label style="font-size: medium;" for="azureOpenAIApiKey">API Key:</label>
-  <input id="azureOpenAIApiKey" type="password" size="32" style="font-size: medium;" value="e0669b14fa844b40bc6b9b6356afa7b5"/><br />
+  <input id="azureOpenAIApiKey" type="password" size="32" style="font-size: medium;"/><br />
   <label style="font-size: medium;" for="azureOpenAIDeploymentName">Deployment Name:</label>
   <input id="azureOpenAIDeploymentName" type="text" size="32" style="font-size: medium;" value="jtsoft-gpt-35-turbo"/><br />
   <label style="font-size: medium;"  for="prompt">System Prompt:</label><br/>
@@ -91,10 +91,10 @@
 <button id="stopSession" onclick="window.stopSession()" disabled>Close Avatar Session</button>
 
 <div id="questionContainer" style="position: relative; width: 960px;">
-  <button id="askQuestion1" style="background-color: #4295FF;" onclick="window.askQuestion(1)">你可以做到啲咩？</button>
-  <button id="askQuestion2" style="background-color: #4295FF;" onclick="window.askQuestion(2)">海洋公園有啲咩玩？</button>
-  <button id="askQuestion3" style="background-color: #4295FF;" onclick="window.askQuestion(3)">海洋公園有啲咩食？</button>
-  <button id="askQuestion4" style="background-color: #4295FF;" onclick="window.askQuestion(4)">海洋公園有啲咩動物？</button>
+  <button id="askQuestion1" style="background-color: #4295FF;" onclick="window.askQuestion('海洋公園有咩園區？')">海洋公園有咩園區？</button>
+  <button id="askQuestion2" style="background-color: #4295FF;" onclick="window.askQuestion('海洋公園有啲咩玩？')">海洋公園有啲咩玩？</button>
+  <button id="askQuestion3" style="background-color: #4295FF;" onclick="window.askQuestion('海洋公園有啲咩食？')">海洋公園有啲咩食？</button>
+  <button id="askQuestion4" style="background-color: #4295FF;" onclick="window.askQuestion('海洋公園有啲咩動物？')">海洋公園有啲咩動物？</button>
 </div>
 
 <div id="videoContainer" style="position: relative; width: 960px;">

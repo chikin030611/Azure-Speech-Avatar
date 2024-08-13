@@ -56,7 +56,7 @@ function setupWebRTC(iceServerUrl, iceServerUsername, iceServerCredential) {
                 if (document.getElementById('transparentBackground').checked) {
                     window.requestAnimationFrame(makeBackgroundTransparent)
                 } else {
-                    remoteVideoDiv.style.width = mediaPlayer.videoWidth / 2 + 'px'
+                    remoteVideoDiv.style.width = mediaPlayer.videoWidth / 2.5 + 'px'
                 }
             })
         }
@@ -301,30 +301,85 @@ window.updatePrivateEndpoint = () => {
     }
 }
 
-window.askQuestion = function(questionNumber) {
-    const questions = {
-        1: "你可以做到啲咩？",
-        2: "海洋公園有啲咩玩？",
-        3: "海洋公園有啲咩食？",
-        4: "海洋公園有啲咩動物？"
-    };
-    const answers = {
-        1: "我可以提供資訊、娛樂同答問題。",
-        2: "海洋公園有過山車、表演同埋水族館。",
-        3: "海洋公園有各種餐廳、仲有小食舖。",
-        4: "海洋公園有海豚、海獅同其他海洋生物。"
+window.askQuestion = function(question) {
+    const qnaMap = {
+        "海洋公園有咩園區？": "海洋公園有兩個主要樂園，第一個係「海濱樂園」，入面有「威威天地」、「亞洲動物天地」同「夢幻水都」；"
+                    + "第二個係「高峰樂園」，入面有「滑浪飛船」、「熱帶激流」、「動感快車」、「翻天覆地」同「極速之旅 ── VR太空探索」。"
+                    + "你可以選擇搭纜車或者海洋列車上去，沿途可以欣賞到壯觀嘅山海美景。",
+        "海洋公園有啲咩玩？": "海洋公園有好多嘢玩㗎。小朋友可以喺「威威天地」玩「彈彈屋」、「幻彩旋轉馬」。"
+                        + "到咗「高峰樂園」，你可以玩「滑浪飛船」、「動感快車」，仲有「極速之旅 ── VR太空探索」。"
+                        + "鍾意動物嘅可以去「亞洲動物天地」睇大熊貓、「尋鯊探秘」睇鯊魚，仲有「冰極天地」睇企鵝。"
+                        + "園內有互動體驗，可以近距離接觸動物，了解佢哋嘅日常生活同保護野生動物嘅知識。海洋公園有好多嘢等緊你慢慢發掘！",
+        "海洋公園有啲咩食？": "喺海洋公園，你可以搵到好多唔同嘅食肆選擇。例如，喺「夢幻水都」區，有「海龍王餐廳」同「爐炭燒」兩間特色餐廳。"
+                        + "另外，如果你想嘆啲輕鬆嘅小食，「香港老大街」嘅「歡樂小食」同「動感天地」嘅「動感美食坊」都係好選擇。",
+        "海洋公園有啲咩動物？": "海洋公園有好多種動物，例如「澳洲歷奇」有無尾熊、「亞洲動物天地」有大熊貓，同「冰極天地」有企鵝，全部都好可愛！"
+                        + "園內有互動體驗，可以近距離接觸動物，了解佢哋嘅生活同保護野生動物嘅知識。"
+                        + "你可以喺「約會海象」摸海象、餵食；喺「豚聚一刻」同海豚玩水，甚至成為一小時嘅名譽大熊貓護理員。"
+                        + "參加「神秘深海之夜」，可以喺「海洋奇觀」內露營，徹夜觀賞超過5000條魚，可以同鯆魚、鎚頭鯊相伴。"
     };
 
     // Get the question and answer based on the button pressed
-    const question = questions[questionNumber];
-    const answer = answers[questionNumber];
+    const answer = qnaMap[question];
 
     // Speak the answer
     speak(answer);
 
     // Update the message history
     const messageHistory = document.getElementById('messageHistory');
-    messageHistory.innerHTML += `<p><strong>Question:</strong> ${question}</p>`;
-    messageHistory.innerHTML += `<p><strong>Answer:</strong> ${answer}</p>`;
+    messageHistory.innerHTML += `<div style="margin: 5px"><strong>Question:</strong> ${question}</div>`;
+    messageHistory.innerHTML += `<div style="margin: 5px"><strong>Answer:</strong> ${answer}</div>`;
 
 }
+
+const STUN_URL = "stun:stun.sipsorcery.com";
+const WEBSOCKET_URL = "ws://127.0.0.1:8081/"
+
+var pc, ws;
+
+async function startStreaming() {
+
+    // // Request access to required audio/video capture devices.
+    // var captureStm = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+    // document.querySelector('#videoCtl').srcObject = captureStm; // No remote streams so render local ones.
+
+    // Get the video stream from the video element
+    var captureStm = document.getElementById('video').captureStream(30);
+    pc = new RTCPeerConnection({ iceServers: [{ urls: STUN_URL }] });
+
+    log("WebRTC peer connection created.");
+
+    //pc.ontrack = evt => document.querySelector('#videoCtl').srcObject = evt.streams[0];
+    pc.onicecandidate = evt => evt.candidate && ws.send(JSON.stringify(evt.candidate));
+
+    // Diagnostics.
+    pc.onicegatheringstatechange = () => console.log("onicegatheringstatechange: " + pc.iceGatheringState);
+    pc.oniceconnectionstatechange = () => console.log("oniceconnectionstatechange: " + pc.iceConnectionState);
+    pc.onsignalingstatechange = () => console.log("onsignalingstatechange: " + pc.signalingState);
+    pc.onconnectionstatechange = () => console.log("onconnectionstatechange: " + pc.connectionState);
+
+    // Add local capture streams to peer connection.
+    captureStm.getTracks().forEach(track => pc.addTrack(track, captureStm));
+
+    // Web socket signaling.
+    ws = new WebSocket(document.querySelector('#websockurl').value, []);
+    ws.onmessage = async function (evt) {
+        if (/^[\{"'\s]*candidate/.test(evt.data)) {
+            pc.addIceCandidate(JSON.parse(evt.data));
+        }
+        else {
+            await pc.setRemoteDescription(new RTCSessionDescription(JSON.parse(evt.data)));
+            pc.createAnswer()
+                .then((answer) => pc.setLocalDescription(answer))
+                .then(() => ws.send(JSON.stringify(pc.localDescription)));
+        }
+    };
+};
+
+async function closePeer() {
+    pc.getSenders().forEach(sender => {
+        sender.track.stop();
+        pc.removeTrack(sender);
+    });
+    await pc.close();
+    await ws.close();
+};
