@@ -1,5 +1,7 @@
 # Microsoft Azure TTS Talking Avatar
 
+[中文版README](https://github.com/chikin030611/Azure-Speech-Avatar/blob/main/README_ZH.md)
+
 (I forgot to change git user before commiting the changes, so Joe was also the contributor lol.)
 
 **Basic** sample is the TTS talking avatar which only speaks the prompt you have given.
