@@ -1,5 +1,7 @@
 # Microsoft Azure TTS Talking Avatar
 
+(I forgot to change git user before commiting the changes, so Joe was also the contributor lol.)
+
 Basic sample is the TTS talking avatar which only speaks the prompt you have given.
 
 Chat sample is the TTS talking avatar integrated with Azure OpenAI ChatGPT, which analyzes the text and gives out the ansewr.
