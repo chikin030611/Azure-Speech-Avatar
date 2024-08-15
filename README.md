@@ -67,7 +67,7 @@ Run the sample code by opening `chat.html` in a browser.
 
 ### Azure Cognitive Search ("Enable On Your Data" needs to be checked)
 If you want to constrain the chat within your own data, please follow [Quickstart: Chat with Azure OpenAI models using your own data](https://learn.microsoft.com/azure/cognitive-services/openai/use-your-data-quickstart?pivots=programming-language-studio) to create your data source, and then fill below information:
-  - **Endpoint**: the endpoint of your Azure Cognitive Search resource, e.g. https://your-cogsearch-resource-name.search.windows.net/, which can be found in the `Overview` section of your Azure Cognitive Search resource in Azure portal, appearing at `Essentials -> Url` field.
+  - **Endpoint**: the endpoint of your Azure Cognitive Search resource, e.g. `https://your-cogsearch-resource-name.search.windows.net/` , which can be found in the `Overview` section of your Azure Cognitive Search resource in Azure portal, appearing at `Essentials -> Url` field.
   - **API Key**: the API key of your Azure Cognitive Search resource, which can be found in the `Keys` section of your Azure Cognitive Search resource in Azure portal. Please make sure to use the `Admin Key` instead of `Query Key`.
   - **Index Name**: the name of your Azure Cognitive Search index, which can be found in the `Indexes` section of your Azure Cognitive Search resource in Azure portal.
 
