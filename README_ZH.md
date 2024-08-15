@@ -67,7 +67,7 @@
 
 ### Azure 認知搜尋（需要選取「啟用您的資料」）
 如果您想將聊天限制在您自己的資料內，請按照[快速入門：使用您自己的資料與Azure OpenAI 模型聊天](https://learn.microsoft.com/azure/cognitive-services/openai/use -your- data-quickstart?pivots=programming-language-studio) 建立資料來源，然後填寫以下資訊：
- - **Endpoint**：Azure 認知搜尋資源的端點，例如https://your-cogsearch-resource-name.search.windows.net/，可以在 Azure 入口網站中的 Azure 認知搜尋資源的「概述」部分中找到，顯示在「Essentials -> Url」欄位中。
+ - **Endpoint**：Azure 認知搜尋資源的端點，例如 `https://your-cogsearch-resource-name.search.windows.net/` ，可以在 Azure 入口網站中的 Azure 認知搜尋資源的「概述」部分中找到，顯示在「Essentials -> Url」欄位中。
  - **API Key**：Azure 認知搜尋資源的 API 金鑰，可在 Azure 入口網站中 Azure 認知搜尋資源的「金鑰」部分找到。請確保使用“管理密鑰”而不是“查詢密鑰”。
  - **Index Name**：Azure 認知搜尋索引的名稱，可在 Azure 入口網站中 Azure 認知搜尋資源的「索引」部分中找到。
 
