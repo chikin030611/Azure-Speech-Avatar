@@ -1,4 +1,4 @@
-# Microsoft Azure TTS Talking Avatar
+# Microsoft Azure TTS Talking Avatar ( Azure Speech Avatar with preset answer & Azure OpenAI (Javascript) )
 
 [中文版README](https://github.com/chikin030611/Azure-Speech-Avatar/blob/main/README_ZH.md)
 
